@@ -21,7 +21,7 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg"; 
-import garmin from "./company/garmin.png";
+import garmin from "./company/Garmin.png";
 import peel from "./company/peel.png";
 import uw from "./company/uw.png";
 import arista from "./company/arista.png";
