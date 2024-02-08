@@ -29,6 +29,7 @@ import arista from "./company/arista.png";
 import nl2bash from "./nl2bash.png";
 import gpt from "./gpt.png";
 import rcar from "./rcars.png";
+import music from "./music.mp3"
 
 export {
   logo,
@@ -59,4 +60,5 @@ export {
   nl2bash,
   gpt,
   rcar,
+  music,
 };

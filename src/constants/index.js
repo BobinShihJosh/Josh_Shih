@@ -122,8 +122,8 @@ import {
       iconBg: "#383E56",
       date: "Sept 2016 - June 2020",
       points: [
-        "M.S. in Electrical & Computer Engineering",
-        "B.S. in Electrical & Computer Engineering",
+        "M.S. in Electrical & Computer Engineering 2016-2020",
+        "B.S. in Electrical & Computer Engineering 2022-2024",
       ],
     },
     {
