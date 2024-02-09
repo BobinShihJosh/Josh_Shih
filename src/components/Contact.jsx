@@ -5,7 +5,7 @@ import emailjs from "@emailjs/browser";
 import { styles } from "../styles";
 import { ComputersCanvas, EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
-import { slideIn } from "../utils/motion"; 
+import { slideIn } from "../utils/motion";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -19,7 +19,7 @@ const Contact = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const notify = () => {toast("Thank you. I will get back to you as soon as possible.");}
+  const notify = () => { toast("Thank you. I will get back to you as soon as possible."); }
 
   const handleChange = (e) => {
     const { target } = e;
@@ -35,21 +35,24 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
-    emailjs
-      .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          to_name: "Josh Shih",
-          from_email: form.email,
-          to_email: "bobinshihjosh@gmail.com",
-          message: form.message,
-        },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
+    const sendEmail = async () => {
+      try {
+        const response = await fetch("/.netlify/functions/getApiKeys", {
+          method: 'POST', // or 'GET' depending on your function
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from_name: form.name,
+            to_name: "Josh Shih",
+            from_email: form.email,
+            to_email: "bobinshihjosh@gmail.com",
+            message: form.message,
+          }),
+          // add other options such as body for POST requests
+        });
+
+        if (response.ok) {
           setLoading(false);
           // alert("Thank you. I will get back to you as soon as possible.");
           notify();
@@ -58,22 +61,60 @@ const Contact = () => {
             email: "",
             message: "",
           });
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
+        } else {
+          console.error('Error with call response:');
+          setLoading(false); 
           notify();
-          // alert("Ahh, something went wrong. Please try again.");
         }
-      );
+      } catch (error) {
+        console.error('Error:', error);
+        setLoading(false); 
+        notify();
+      }
+    };
+
+    // Call sendEmail() instead of the direct EmailJS call
+    sendEmail();
+
+    // emailjs
+    //   .send(
+    //     import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+    //     import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+    //     {
+    //       from_name: form.name,
+    //       to_name: "Josh Shih",
+    //       from_email: form.email,
+    //       to_email: "bobinshihjosh@gmail.com",
+    //       message: form.message,
+    //     },
+    //     import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+    //   )
+    //   .then(
+    //     () => {
+    //       setLoading(false);
+    //       // alert("Thank you. I will get back to you as soon as possible.");
+    //       notify();
+    //       setForm({
+    //         name: "",
+    //         email: "",
+    //         message: "",
+    //       });
+    //     },
+    //     (error) => {
+    //       setLoading(false);
+    //       console.error(error);
+    //       notify();
+    //       // alert("Ahh, something went wrong. Please try again.");
+    //     }
+    //   );
   };
 
   return (
-    
+
     <div
       className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
     >
-       
+
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
         className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
@@ -126,20 +167,20 @@ const Contact = () => {
           >
             {loading ? "Sending..." : "Send"}
           </button>
-           
+
         </form>
         <ToastContainer
-            position="top-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-            transition:Bounce />
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition:Bounce />
       </motion.div>
 
       <motion.div

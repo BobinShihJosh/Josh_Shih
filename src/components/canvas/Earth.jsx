@@ -9,8 +9,7 @@ const Earth = () => {
   const { scene, animations } = useGLTF(smol); 
    
   const { actions } = useAnimations(animations, ref);
-
-  console.log("actions", actions)
+ 
 
   useEffect( () => {
     // actions['HallucinationHuggy|A_HallucinationHuggy_Encounter'].play(); //poppy
