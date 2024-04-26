@@ -15,9 +15,21 @@ const ProjectCard = ({
   tags,
   image,
   source_code_link,
-}) => {
+}) => { 
+  const handleLinkClick = (e) => {
+    e.stopPropagation(); // Prevent the click event from bubbling up
+    window.open(source_code_link, "_blank"); // Open the link in a new tab
+  };
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    // <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    <motion.a
+      href={source_code_link}
+      target="_blank"
+      rel="noopener noreferrer"
+      variants={fadeIn("up", "spring", index * 0.5, 0.75)}
+      // onClick={handleLinkClick} // Handle click event
+      style={{ textDecoration: 'none' }} // Optional: Remove default underline
+    > 
       <Tilt
         options={{
           max: 45,
@@ -63,7 +75,8 @@ const ProjectCard = ({
           ))}
         </div>
       </Tilt>
-    </motion.div>
+      </motion.a>
+    // </motion.div>
   );
 };
 

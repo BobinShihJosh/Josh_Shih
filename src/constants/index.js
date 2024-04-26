@@ -192,25 +192,27 @@ import {
   
   const projects = [
     {
-      name: "Natural Language 2 Bash",
+
+      name: "AI Resume Tailor",
       description:
-        "A model that generates linux bash commands from english text input trained on custom data-set generated from GPT-3.5-Turbo.",
+        "Speed up job applications by 10x, by using AI to tailor your resume to each job description.",
       tags: [
         {
-          name: "Python",
+          name: "Next.js",
           color: "blue-text-gradient",
         },
         {
-          name: "NLP",
+          name: "MongoDB",
           color: "green-text-gradient",
         },
         {
-          name: "HuggingFace",
+          name: "NoSQL",
           color: "pink-text-gradient",
         },
       ],
-      image: nl2bash,
-      source_code_link: "https://github.com/BobinShihJosh/ENG2Bash",
+      image: gpt,
+      source_code_link: "https://www.resumetailorai.com/", 
+       
     },
     {
       name: "Data Hiding in Robot Cars",
@@ -233,26 +235,25 @@ import {
       image: rcar,
       source_code_link: "https://github.com/BobinShihJosh/Robot_Sign_Language",
     },
-    {
-      name: "GPT Voice Assistant",
-      description:
-        "A mobile chatbot powered by GPT3.5Turbo API and text-2-Speech function using phone speaker.",
-      tags: [
-        {
-          name: "React",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "Node.js",
-          color: "green-text-gradient",
-        },
-        {
-          name: "NLP",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: gpt,
-      source_code_link: "https://github.com/BobinShihJosh/GPT-Voice-Assistant",
+    { name: "Natural Language 2 Bash",
+    description:
+      "A model that generates linux bash commands from english text input trained on custom data-set generated from GPT-3.5-Turbo.",
+    tags: [
+      {
+        name: "Python",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "NLP",
+        color: "green-text-gradient",
+      },
+      {
+        name: "HuggingFace",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: nl2bash,
+    source_code_link: "https://github.com/BobinShihJosh/ENG2Bash",
     },
   ];
   
